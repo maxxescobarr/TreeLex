@@ -13,28 +13,40 @@ public class AnalizaLex{
       case "afirmative":
         values[0]=sentence[0];//pronombre
         values[1]=sentence[1];//verbo
-        values [2]=sentence[2];//complemento
+        values [2]="";//complemento
+        for (int i =2;i<sentence.length ;i++ ) {
+            values[2]+=sentence[i]+" ";
+        }
         values[3]=connector[0];// connector not
         values [4]=connector[2];
         break;
       case "negative":
         values[0]=sentence[0];
         values[1]=sentence[2];
-        values[2]=sentence[3];
+        values [2]="";//complemento
+        for (int i =3;i<sentence.length ;i++ ) {
+            values[2]+=sentence[i]+" ";
+        }
         values[3]=connector[0];// connector not
         values [4]=connector[2];
         break;
       case "negative interrogative":
         values[0]=sentence[1];
         values[1]=sentence[2];
-        values[2]=sentence[3];
+        values [2]="";//complemento
+        for (int i =3;i<sentence.length -1;i++ ) {
+            values[2]+=sentence[i]+" ";
+        }
         values[3]=connector[0];// connector not
         values [4]=connector[2];
         break;
       case "question":
         values[0]=sentence[1];
         values[1]=sentence[2];
-        values[2]=sentence[3];
+        values [2]="";//complemento
+        for (int i =3;i<sentence.length - 1 ;i++ ) {
+            values[2]+=sentence[i]+" ";
+        }
         values[3]=connector[0];// connector not
         values [4]=connector[2];
         break;
@@ -47,10 +59,10 @@ public class AnalizaLex{
         String tipo="";
         int i,j;
 
-        if((oracion.contains("don't") || oracion.contains("do not")) && oracion.contains("?")){
+        if((oracion.contains("don't") || oracion.contains("dont")) && oracion.contains("?")){
             tipo="negative interrogative";
         }else{
-            if((oracion.contains("don't") || oracion.contains("do not")) && !oracion.contains("?")){
+            if((oracion.contains("don't") || oracion.contains("dont")) && !oracion.contains("?")){
                 tipo="negative";
             }else{
                 if(oracion.contains("do") && oracion.contains("?")){
@@ -74,13 +86,13 @@ public class AnalizaLex{
             case "afirmative":
                 for(int i=0;i<oracionP.length;i++){
                     for(int j=0;j<pronombres.length;j++){
-                        if(oracionP[i].contains(pronombres[j])){
+                        if(oracionP[i].equals(pronombres[j])){
                             containpronombre=true;
                             pronombre=pronombres[j];
                         }
                     }
                     for(int j=0;j<verbo.length;j++){
-                        if(oracionP[i].contains(verbo[j])){
+                        if(oracionP[i].equals(verbo[j])){
                             containverb=true;
                             verb=verbo[j];
                         }
@@ -106,30 +118,31 @@ public class AnalizaLex{
 
                 for(int i=0;i<oracionP.length;i++){
                     for(int j=0;j<pronombres.length;j++){
-                        if(oracionP[i].contains(pronombres[j])){
+                        if(oracionP[i].equals(pronombres[j])){
                             containpronombre=true;
                             pronombre=pronombres[j];
                         }
                     }
                     for(int j=0;j<verbo.length;j++){
-                        if(oracionP[i].contains(verbo[j])){
+                        if(oracionP[i].equals(verbo[j])){
                             containverb=true;
                             verb=verbo[j];
                         }
                     }
                     for(int j=0;j<conectores.length;j++){
-                        if(oracionP[i].contains(conectores[j])){
-                            containverb=true;
+                        if(oracionP[i].equals(conectores[j])){
+                            containconector=true;
                             conector=conectores[j];
                         }
                     }
                 }
             //    System.out.println("----------------------------------------------\n");
               //  System.out.println("Pronombre: "+pronombre+" Verbo: "+verb + " Conector : " + conector);
-                //System.out.println(oracionP[0] + " " + oracionP[1]);
+                //System.out.println(oracionP[0] + " " + oracionP[1])
+                System.out.println(containconector+":"+containpronombre+":"+containconector);
                 if(containconector && containpronombre && containverb){
                      if(oracionP[0].equals(pronombre) && oracionP[1].equals(conector) && oracionP[2].equals(verb)){
-                         resultado="Oracion correcta";
+                         resultado="Oracion Correcta";
                  }else{
                      resultado="La sentencia no esta en el orden correcto";
                     }
@@ -141,20 +154,20 @@ public class AnalizaLex{
             case "negative interrogative":
                 for(int i=0;i<oracionP.length;i++){
                     for(int j=0;j<pronombres.length;j++){
-                        if(oracionP[i].contains(pronombres[j])){
+                        if(oracionP[i].equals(pronombres[j])){
                             containpronombre=true;
                             pronombre=pronombres[j];
                         }
                     }
                     for(int j=0;j<verbo.length;j++){
-                        if(oracionP[i].contains(verbo[j])){
+                        if(oracionP[i].equals(verbo[j])){
                             containverb=true;
                             verb=verbo[j];
                         }
                     }
                     for(int j=0;j<conectores.length;j++){
-                        if(oracionP[i].contains(conectores[j])){
-                            containverb=true;
+                        if(oracionP[i].equals(conectores[j])){
+                            containconector=true;
                             conector=conectores[j];
                         }
                     }
@@ -164,8 +177,8 @@ public class AnalizaLex{
           //      System.out.println("Pronombre: "+pronombre+" Verbo: "+verb + " Conector : " + conector);
             //    System.out.println(oracionP[0] + " " + oracionP[1]);
                  if(containconector && containpronombre && containverb){
-                     if(oracionP[0].equals(pronombre) && oracionP[1].equals(conector) && oracionP[2].equals(verb)){
-                         resultado="Oracion correcta";
+                     if(oracionP[0].equals(conector) && oracionP[1].equals(pronombre) && oracionP[2].equals(verb)){
+                         resultado="Oracion Correcta";
                      }else{
                          resultado="La sentencia no esta en el orden correcto";
                      }
@@ -188,13 +201,13 @@ public class AnalizaLex{
                         }
                     }
                     for(int j=0;j<verbo.length;j++){
-                        if(oracionP[i].contains(verbo[j])){
+                        if(oracionP[i].equals(verbo[j])){
                             containverb=true;
                             verb=verbo[j];
                         }
                     }
                     for(int j=0;j<conectores.length;j++){
-                        if(oracionP[i].contains(conectores[j])){
+                        if(oracionP[i].equals(conectores[j])){
                             containconector=true;
                             conector=conectores[j];
                         }

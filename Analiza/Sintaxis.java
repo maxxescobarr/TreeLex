@@ -26,6 +26,8 @@ public class Sintaxis{
 		System.out.println(recorrido);
 		System.out.println("");
 		recorrido = "";
+		dibujarArbol(raiz);
+		//System.out.println(dibujo);
 	}
 
 	public void oracionNegativa(String oracion[]){
@@ -44,6 +46,8 @@ public class Sintaxis{
 		System.out.println(recorrido);
 		System.out.println("");
 		recorrido = "";
+		dibujarArbol(raiz);
+
 	}
 
 	public void preguntaNegativa(String oracion[]){
@@ -64,6 +68,8 @@ public class Sintaxis{
 		System.out.println(recorrido);
 		System.out.println("");
 		recorrido = "";
+		dibujarArbol(raiz);
+
 	}
 
 	public void pregunta(String oracion[]){
@@ -81,15 +87,17 @@ public class Sintaxis{
 		verbo.der = pregunta;
 		preOrder(raiz);
 		//debug(raiz);
-		System.out.println(recorrido);	
-		System.out.println("");	
+		System.out.println(recorrido);
+		System.out.println("");
 		recorrido = "";
+		dibujarArbol(raiz);
+		
 	}
 
-	
+
 	public void preOrder(Nodo recorrer) {
         if (recorrer != null) {
-            //System.out.println(recorrer.datos);  
+            //System.out.println(recorrer.datos);
             recorrido += " "+ recorrer.datos.toString();
             preOrder(recorrer.izq);
             preOrder(recorrer.der);
@@ -117,6 +125,24 @@ public class Sintaxis{
             debug(raiz.der);
         }
     }
+	String dibujo = " ";
+
+	public void dibujarArbol(Nodo root){
+		if (root != null) {
+            //System.out.println(recorrer.datos);
+            //dibujo = " "+ root.datos.toString();
+			System.out.print(root.datos);
+			if(root.izq != null){
+				System.out.print("("+root.izq.datos+")");
+			}
+			if(root.der != null){
+				System.out.print("("+root.der.datos+")");
+			}
+			System.out.println();
+			dibujarArbol(root.izq);
+            dibujarArbol(root.der);
+        }
+	}
 
 
 	class Nodo{
