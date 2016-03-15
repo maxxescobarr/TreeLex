@@ -87,9 +87,9 @@ public class AnalizaLex{
                     }
                 }
 
-                System.out.println("----------------------------------------------\n");
-                System.out.println("Pronombre: "+pronombre+" Verbo: "+verb);
-                System.out.println(oracionP[0] + " " + oracionP[1]);
+               // System.out.println("----------------------------------------------\n");
+                //System.out.println("Pronombre: "+pronombre+" Verbo: "+verb);
+                //System.out.println(oracionP[0] + " " + oracionP[1]);
 
                 if(containpronombre && containverb){
                     if(pronombre.equals(oracionP[0])&&verb.equals(oracionP[1])){
@@ -124,9 +124,9 @@ public class AnalizaLex{
                         }
                     }
                 }
-                System.out.println("----------------------------------------------\n");
-                System.out.println("Pronombre: "+pronombre+" Verbo: "+verb + " Conector : " + conector);
-                System.out.println(oracionP[0] + " " + oracionP[1]);
+            //    System.out.println("----------------------------------------------\n");
+              //  System.out.println("Pronombre: "+pronombre+" Verbo: "+verb + " Conector : " + conector);
+                //System.out.println(oracionP[0] + " " + oracionP[1]);
                 if(containconector && containpronombre && containverb){
                      if(oracionP[0].equals(pronombre) && oracionP[1].equals(conector) && oracionP[2].equals(verb)){
                          resultado="Oracion correcta";
@@ -160,9 +160,9 @@ public class AnalizaLex{
                     }
                 }
 
-                System.out.println("----------------------------------------------\n");
-                System.out.println("Pronombre: "+pronombre+" Verbo: "+verb + " Conector : " + conector);
-                System.out.println(oracionP[0] + " " + oracionP[1]);
+        //        System.out.println("----------------------------------------------\n");
+          //      System.out.println("Pronombre: "+pronombre+" Verbo: "+verb + " Conector : " + conector);
+            //    System.out.println(oracionP[0] + " " + oracionP[1]);
                  if(containconector && containpronombre && containverb){
                      if(oracionP[0].equals(pronombre) && oracionP[1].equals(conector) && oracionP[2].equals(verb)){
                          resultado="Oracion correcta";

@@ -7,6 +7,7 @@ package Analiza;
 public class Sintaxis{
 
 	Nodo raiz;
+	String recorrido = "";
 
 	public Sintaxis(){
 
@@ -22,6 +23,9 @@ public class Sintaxis{
 		raiz.izq = verbo;
 		raiz.der = complemento;
 		preOrder(raiz);
+		System.out.println(recorrido);
+		System.out.println("");
+		recorrido = "";
 	}
 
 	public void oracionNegativa(String oracion[]){
@@ -37,6 +41,9 @@ public class Sintaxis{
 		verbo.izq = complemento;
 		//debug(raiz);
 		preOrder(raiz);
+		System.out.println(recorrido);
+		System.out.println("");
+		recorrido = "";
 	}
 
 	public void preguntaNegativa(String oracion[]){
@@ -54,6 +61,9 @@ public class Sintaxis{
 		verbo.der = pregunta;
 		preOrder(raiz);
 		//debug(raiz);
+		System.out.println(recorrido);
+		System.out.println("");
+		recorrido = "";
 	}
 
 	public void pregunta(String oracion[]){
@@ -61,7 +71,7 @@ public class Sintaxis{
 		Nodo pronombre = new Nodo(oracion[0]);
 		Nodo verbo = new Nodo(oracion[1]);
 		Nodo complemento = new Nodo(oracion[2]);
-		Nodo conector = new Nodo(oracion[3]);
+		Nodo conector = new Nodo(oracion[4]);
 		Nodo pregunta = new Nodo("?");
 		if(raiz == null)
 			raiz = conector;
@@ -71,14 +81,18 @@ public class Sintaxis{
 		verbo.der = pregunta;
 		preOrder(raiz);
 		//debug(raiz);
+		System.out.println(recorrido);	
+		System.out.println("");	
+		recorrido = "";
 	}
 
+	
 	public void preOrder(Nodo recorrer) {
         if (recorrer != null) {
-            System.out.println(recorrer.datos);  
+            //System.out.println(recorrer.datos);  
+            recorrido += " "+ recorrer.datos.toString();
             preOrder(recorrer.izq);
             preOrder(recorrer.der);
-
         }
 
     }
