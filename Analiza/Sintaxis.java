@@ -1,3 +1,9 @@
+/**
+*@author Julio Cesar De Buen Hernandez 143460
+*/
+
+package Analiza;
+
 public class Sintaxis{
 
 	Nodo raiz;
@@ -24,13 +30,13 @@ public class Sintaxis{
 		Nodo verbo = new Nodo(oracion[1]);
 		Nodo complemento = new Nodo(oracion[2]);
 		Nodo conector = new Nodo(oracion[3]);
-		if(raiz = null)
+		if(raiz == null)
 			raiz = pronombre;
 		raiz.izq = conector;
 		raiz.der = verbo;
 		verbo.izq = complemento;
-		debug(raiz);
-		preOrder(root);
+		//debug(raiz);
+		preOrder(raiz);
 	}
 
 	public void preguntaNegativa(String oracion[]){
@@ -47,7 +53,7 @@ public class Sintaxis{
 		verbo.izq = complemento;
 		verbo.der = pregunta;
 		preOrder(raiz);
-		debug(raiz);
+		//debug(raiz);
 	}
 
 	public void pregunta(String oracion[]){
@@ -57,17 +63,17 @@ public class Sintaxis{
 		Nodo complemento = new Nodo(oracion[2]);
 		Nodo conector = new Nodo(oracion[3]);
 		Nodo pregunta = new Nodo("?");
-		if(raiz = null)
-			raiz 0 conector;
+		if(raiz == null)
+			raiz = conector;
 		raiz.izq = pronombre;
 		raiz.der = verbo;
 		verbo.izq = complemento;
-		ver.der = pregunta;
+		verbo.der = pregunta;
 		preOrder(raiz);
-		debug(root);
+		//debug(raiz);
 	}
 
-	public void preOrder(Node recorrer) {
+	public void preOrder(Nodo recorrer) {
         if (recorrer != null) {
             System.out.println(recorrer.datos);  
             preOrder(recorrer.izq);
@@ -77,17 +83,17 @@ public class Sintaxis{
 
     }
 
-    public void debug(Node raiz){
+    public void debug(Nodo raiz){
         String parent="",left="",right="";
 
         if(raiz.datos!=null){
             parent =raiz.datos.toString();
         }
         if(raiz.izq !=null){
-            left =root.izq.datos.toString();
+            left =raiz.izq.datos.toString();
         }
         if(raiz.der !=null){
-            right =root.der.datos.toString();
+            right =raiz.der.datos.toString();
         }
         System.out.println("Parent :"+parent+" Left:"+left+" Rigth:"+right);
         if(raiz.izq !=null){
@@ -95,10 +101,11 @@ public class Sintaxis{
         }
         if(raiz.der !=null){
             debug(raiz.der);
+        }
     }
 
 
-	public class Nodo{
+	class Nodo{
 		Nodo izq;
 		Nodo der;
 		Object conectorIzq;

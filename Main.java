@@ -5,10 +5,11 @@ public class Main{
     public static void main(String[] args) {
 
         //Instanciar analizador sintactico ej. TreeSintact tree=new TreeSintact();
+        Sintaxis sintax = new Sintaxis();
         AnalizaLex lex=new AnalizaLex();
 
-
-        String oracion="do you eat hamburguesa ?";
+        String oracion="do you eat hamburguesa?";
+        String [] oracionArray = oracion.split(" ");
 
         String pronombres[]={"i","you","he","she","we","they","it"};
         String verbos[]={"eat","like","love","run","jump","work","walk","drink","take","dream","swim"};
@@ -18,9 +19,13 @@ public class Main{
         System.out.println(tipo);
 
         String respuesta=lex.valida(tipo,oracion,verbos,pronombres,conectores);
-
-        if(!respuesta.equals("Oracion Correcta")){
-            System.out.println(respuesta);
+       // System.out.println(respuesta);
+        if(respuesta.equals("Oracion Correcta")){
+            //System.out.println("correcto "+respuesta);
+            System.out.println("Oracion Afirmativa");
+            sintax.oracionAfirmativa(oracionArray);
+            System.out.println("Oracion Negativa");
+            sintax.oracionNegativa(oracionArray);
         }else{
             String split[]=oracion.split(" ");
             String values[]=lex.getValues(tipo,split,conectores);
