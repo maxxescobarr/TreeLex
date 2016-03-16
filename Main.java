@@ -16,14 +16,16 @@ public class Main{
         String oracion=palabra.toLowerCase();
         //El pedo es si mete Does
         String [] oracionArray = oracion.split(" ");
-        System.out.println("La oracion es : "+oracionArray[0] + oracionArray[1]+oracionArray[2]);
-
         String pronombres[]={"i","you","he","she","we","they","it"};
-        String verbos[]={"eat","like","love","run","jump","work","walk","drink","take","dream","swim","want","do"};
+        String verbos[]={"eat","like","love","run","jump","work","walk","drink","take","dream","swim","want","do","play"};
         String conectores[]={"dont","do not","do","does not","doesn't","does","don't"};
 
         String tipo=lex.gettipoOracion(oracion);
-        System.out.println(tipo);
+        System.out.println("\n\n");
+        System.out.println("-------------------------------------------------");
+        System.out.println("El tipo de oracion introducida es : "+tipo+"\n");
+        System.out.println("-------------------------------------------------");
+        System.out.println("-------------------------------------------------");
        // System.out.println(tipo);
 
         String respuesta=lex.valida(tipo,oracion,verbos,pronombres,conectores);
@@ -31,18 +33,17 @@ public class Main{
         if(respuesta.equals("Oracion Correcta")){
             //System.out.println("correcto "+respuesta);
             String val[] = lex.getValues(tipo,oracionArray,conectores);
-            System.out.println("Oracion Afirmativa");
+            System.out.println("\n---->Oracion Afirmativa<----");
             sintax.oracionAfirmativa(val);
-            System.out.println("Oracion Negativa");
+            System.out.println("\n---->Oracion Negativa<----");
             sintax.oracionNegativa(val);
-            System.out.println("Pregunta Negativa");
+            System.out.println("\n---->Pregunta Negativa<----");
             sintax.preguntaNegativa(val);
-            System.out.println("Pregunta");
+            System.out.println("\n---->Pregunta<----");
             sintax.pregunta(val);
         }else{
             String split[]=oracion.split(" ");
             String values[]=lex.getValues(tipo,split,conectores);
-            System.out.println(values[0] + " -- " + values[2]);
             System.out.println(respuesta);
         }
     }
